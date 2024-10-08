@@ -1,10 +1,27 @@
+'use client'
 import React from 'react'
 import UploadCareButton from './upload-care-button'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { X } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
-function ProfilePicture() {
+type Props = {
+  userImage: string | null
+  onDelete?: any
+  onUpload: any
+}
+
+
+function ProfilePicture({ userImage, onDelete, onUpload }: Props) {
+  const router = useRouter()
+
+  const onRemoveProfileImage = async () => {
+    const response = await onDelete()
+    if (response) {
+      router.refresh()
+    }
+  }
   return (
     <div className='flex flex-col'>
         <p className='text-lg text-white'>Profile Picture</p>
