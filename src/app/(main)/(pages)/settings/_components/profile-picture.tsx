@@ -37,7 +37,7 @@ function ProfilePicture({ userImage, onDelete, onUpload }: Props) {
           <Button onClick={onRemoveProfileImage} className='bg-transparent text-white/70 hover:bg-transparent hover:text-white'>
             <X/> Remove logo
           </Button>
-          </>:<UploadCareButton/>}
+          </>:<UploadCareButton onUpload={onUpload}/>}
         </div>
     </div>
   )

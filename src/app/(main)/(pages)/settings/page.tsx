@@ -52,7 +52,7 @@ async function page(props: Props) {
   }
 
   return (
-    <div className='flex flex-col gap-4'>   <h1 className="text-4xl sticky top-0 z-[10] p-6 bg-background/50 backdrop-blur-lg flex items-center border-b">
+    <div className='flex flex-col gap-4 '>   <h1 className="text-4xl sticky top-0 z-[10] p-6  bg-background/50 backdrop-blur-lg flex items-center border-b">
       <span>Settings</span>
     </h1>
       <div className='flex flex-col p-6 gap-10'>
@@ -64,8 +64,11 @@ async function page(props: Props) {
           onDelete={removeProfileImage}
           userImage={user?.profileImage || ""}
           onUpload={uploadProfileImage}
-        ></ProfilePicture>
-        <ProfileForm />
+        />
+        <ProfileForm 
+        user={user}
+        onUpdate={updateUserInfo}
+        />
       </div>
     </div>
   )

@@ -7,7 +7,7 @@ type Props = {
     onUpload?:any
 }
 
-function UploadCareButton(props:Props) {
+function UploadCareButton({onUpload}:Props) {
   return (
     <div>
     <FileUploaderRegular
