@@ -78,7 +78,7 @@ function MenuOptions(props:Props) {
         </div>
       </div>
 
-      <div className="flex items-center justify-center flex-col gap-8">
+      <div className="relative flex items-center justify-center flex-col gap-8">
         <ModeToggle />
       </div>
       
