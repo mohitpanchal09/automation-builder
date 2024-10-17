@@ -111,3 +111,43 @@ const editorReducer = (state: EditorState = initialState, action: EditorActions)
 
 
 }
+
+export type EditorContextData ={
+  previewMode:boolean
+  setPreviewMode :(previewMode:boolean) => void
+}
+
+export const EditorContext = createContext<{
+  state:EditorState
+  dispatch:Dispatch<EditorActions>
+}>({
+  state:initialState,
+  dispatch:()=>undefined
+})
+
+type EditorProps = {
+  children:React.ReactNode
+}
+
+const EditorProvider =(props:EditorProps)=>{
+  const [state,dispatch] = useReducer(editorReducer,initialState)
+  return(
+    <EditorContext.Provider value={{
+      state,dispatch
+    }}>
+      {props.children}
+    </EditorContext.Provider>
+  )
+}
+
+
+export const useEditor = ()=>{
+  const context = useContext(EditorContext)
+  if(!context){
+    throw new Error("UseEditor hook must be used within editor provider")
+
+  }
+  return context
+}
+
+export default EditorProvider
